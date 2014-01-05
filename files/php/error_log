@@ -1,0 +1,9 @@
+[01-Apr-2013 15:21:46 Europe/Warsaw] PHP Fatal error:  Call to a member function query() on a non-object in /home/gaming/public_html/files/php/slider.php on line 2
+[01-Apr-2013 15:22:08 Europe/Warsaw] PHP Fatal error:  Call to a member function query() on a non-object in /home/gaming/public_html/files/php/slider.php on line 2
+[01-Apr-2013 15:22:30 Europe/Warsaw] PHP Fatal error:  Call to a member function query() on a non-object in /home/gaming/public_html/files/php/slider.php on line 2
+[01-Apr-2013 15:23:08 Europe/Warsaw] PHP Fatal error:  Call to a member function query() on a non-object in /home/gaming/public_html/files/php/partners.php on line 2
+[01-Apr-2013 15:23:10 Europe/Warsaw] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/gaming/public_html/files/php/match-box.php on line 5
+[03-May-2013 16:25:25 Europe/Warsaw] PHP Fatal error:  Call to a member function query() on a non-object in /home/gaming/public_html/files/php/slider.php on line 8
+[05-May-2013 16:15:55 Europe/Warsaw] PHP Fatal error:  Call to a member function query() on a non-object in /home/gaming/public_html/files/php/slider.php on line 8
+[07-May-2013 18:54:54 Europe/Warsaw] PHP Fatal error:  Call to a member function query() on a non-object in /home/gaming/public_html/files/php/slider.php on line 8
+[16-May-2013 16:07:57 Europe/Warsaw] PHP Fatal error:  Call to a member function query() on a non-object in /home/gaming/public_html/files/php/slider.php on line 8

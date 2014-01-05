@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteRule ^([a-zA-Z-0-9_]+)/([a-zA-Z-0-9_]+)/([a-zA-Z-0-9_]+)$ index.php?module=$1&type=$2&more=$3 [L]
+RewriteRule ^([a-zA-Z-0-9_]+)/([a-zA-Z-0-9_]+)$ index.php?module=$1&type=$2 [L]
+RewriteRule ^([a-zA-Z-0-9_]+)$ index.php?module=$1 [L]

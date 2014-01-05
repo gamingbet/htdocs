@@ -1,0 +1,38 @@
+<?php
+if( !defined("__ADMIN__") || !defined("__LOAD__") )
+{
+	exit();
+}
+
+$sent = false;
+$errors = array();
+
+if( isset($_POST['submit']) && $_POST['submit'] == "Wyślij żądanie" )
+{
+}
+else
+{
+}
+
+if($sent == true)
+{
+}
+else
+{
+	if( !empty($errors ) ) 
+	{
+		echo('<h4 class="alert_error">Podczas operacji wystąpiły błędy!</h4>');
+		echo('<ul>');
+		foreach($errors as $error)
+		{
+			echo('<li>'.$error.'</li>');
+		}
+		echo('</ul>');
+	}
+	echo('<form action="'.$_ACTION.'" method="post" class="post_message">
+	
+	<input type="submit" value="Wyślij żądanie" class="alt_btn" name="submit">
+	</form>');
+}
+
+?>

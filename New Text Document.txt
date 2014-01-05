@@ -1,0 +1,20 @@
+$slider[ 'sql' ] = $db->query( 'SELECT * FROM `slider` WHERE `active` = "true" ORDER BY `lp` ASC' );
+	$slider[ 'count' ] = $slider[ 'sql' ]->rowCount();
+	if( $slider[ 'count' ] > 0 ){
+		while( $slider['slide'] = $slider['sql']->fetch()){
+			echo('		
+				<div class="slider" style="background: url(files/images/slider/'.$slider[ 'slide' ][ 'image' ] .')">
+				');
+			// <img src="files/images/slider/'. $slider[ 'slide' ][ 'image' ] .'" >
+			echo('
+				<div class="wydarzenie">
+					<a href="'.$slider['slide']['url'].' alt="'. $slider[ 'slide' ][ 'name'.'-'.$_GLOBALS['lang'] ].'""><h2>'.stripslashes($slider['slide']['name'.'-'.$_GLOBALS['lang']]).'</h2></a>
+					<br>
+					<div class="miejsce">'.stripslashes($slider['slide']['description'.'-'.$_GLOBALS['lang']]).'</div>
+				</div>');
+			echo('
+				</div>       
+			');
+		}
+
+	}
