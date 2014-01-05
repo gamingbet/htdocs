@@ -1271,3 +1271,82 @@ font-size: 1.4em;}
 	float: left; 
 	padding: 15px;
 	}
+
+hr{
+	border: 0;
+	border-bottom: 1px solid #efefef
+	}
+
+h4{
+	font-family: 'Roboto Condensed';
+	font-size: 1.5em;
+	color: #1d92c6;
+	}
+
+.historia{
+	width: 50%;
+	float: left;
+	min-height: 300px;
+	}
+
+.uczestniczy{
+	width: 50%;
+	float: right;
+	}
+
+.uczestniczy ul{
+	margin-left: 10px;
+	}
+
+.uczestniczy ul li{
+	font-family: 'Roboto Condensed';
+	font-size: 1.2em;
+	color: #e7814a;
+	}
+
+.nastepny-mecz{
+	width: 50%;
+	float: right;
+	margin-top: 15px;
+	}
+
+.nastepny-mecz table{
+	margin-left: 10px;
+	width: 100%;
+	text-align: center;
+	}
+
+.nastepny-mecz table tr td{
+	vertical-align: middle;
+	border-bottom: 1px solid #efefef;
+	padding: 10px;
+	}
+
+.nastepny-mecz table tr td:nth-child(1){
+	width: 100px;
+	font-family: 'Roboto Condensed';
+	}
+.nastepny-mecz table tr td:nth-child(2){
+	width: 30%;
+	}
+		
+.nastepny-mecz table tr td:nth-child(4){
+	width: 30%;
+	}		
+
+.nastepny-mecz table tr td:nth-child(3){
+	width: 20px;
+	}
+.nastepny-mecz table tr td:nth-child(5){
+	width: 100px;
+	}
+.wygrana{
+	font-family: 'Roboto Condensed';
+	font-size: 1.3em;
+	color: #42d800;
+	}
+.porazka{
+	font-family: 'Roboto Condensed';
+	font-size: 1.3em;
+	color: #d80000;
+	}

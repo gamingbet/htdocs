@@ -60,31 +60,30 @@ if($showAll == false){
 	$bbcode = new BBCode;
 	$content = $bbcode->parse($result['description-'.$_GLOBALS['lang']]);
 	if(!empty($content)) {
-		echo '<hr><h4>'.$_LANG['labels']['history'].'</h4>';
-		echo '<p>'.$content.'</p>';
+		echo '<div class="historia"><h4>'.$_LANG['labels']['history'].'</h4>';
+		echo '<p>'.$content.'</p></div>';
 	}
 	$teams = $db->prepare('SELECT * FROM `teams` WHERE `gamingId` = :gid');
 	$teams->bindValue(':gid', $result['id'], PDO::PARAM_STR);
 	$teams->execute();
-	echo '<hr><h4>'.$_LANG['labels']['take-part'].':</h4>';
-	if($teams->rowCount() > 0)
-	{
-		echo '<p>';
+	echo '<div class="uczestniczy"><h4>'.$_LANG['labels']['take-part'].':</h4>';
+	if($teams->rowCount() > 0){
+		echo '<ul>';
 		$gamesstr = '';
 		while($team = $teams->fetch())
 		{
 			$game = getGame($team['gameId']);
 			if(!empty($game['name'])) {
-				$gamesstr .= $game['name'].',';
+				$gamesstr .= '<li>'.$game['name'].'</li>';
 			}
 		}
 		echo substr($gamesstr, 0, -1);
-		echo '</p>';
+		echo '</ul></div>';
 
 	}
 	else
 	{
-		echo('<p>'.$_LANG['labels']['noTeams'].'</p>');
+		echo('<p>'.$_LANG['labels']['noTeams'].'</p></div>');
 	}
 	//LEFT JOIN `bets` ON `bets`.`matchId` = `matches`.`id` AND `bets`.`typeId` = 1 AND `bets`.`active` = "true"
 	$next = $db->prepare('SELECT *, DATE_FORMAT(`start`,"%d.%m.%Y %H:%i") AS `start` FROM `matches` 
@@ -113,21 +112,24 @@ if($showAll == false){
 
 		//var_dump($nextMatch);
 
-		echo '<hr><h4>'.$_LANG['labels']['next-game'].'</h4>';
+		echo '<div class="nastepny-mecz"><h4>'.$_LANG['labels']['next-game'].'</h4>';
 		echo '
 		<table class="table table-striped table-hover  text-center">
 		<tr>
-        	<td>'.substr($nextMatch['start'], 0 , 10).'<br>'.substr($nextMatch['start'], 11).'<br /><img style="vertical-align: middle; width: 12px;" src="/files/images/icons/'.$icon['0']['logo'].'"></td>
+        	<td>'.substr($nextMatch['start'], 0 , 10).' '.substr($nextMatch['start'], 11).'<br /><img style="vertical-align: middle; width: 15px;" src="/files/images/icons/'.$icon['0']['logo'].'"></td>
             <td><a href="/teams/tag/'.$result['tag'].'">'.$result['fullname'].'</a></td>
             <td>vs</td>
             <td><a href="/teams/tag/'.$enemy['tag'].'">'.$enemy['fullname'].'</a></td>
-        </tr></table>';
+			<td></td>
+        </tr></table>
+		</div>
+		';
 	}
 
-	echo('<hr><h4>'.$_LANG['labels']['last-matches'].':</h4>');
+	echo('<div class="nastepny-mecz"><h4>'.$_LANG['labels']['last-matches'].':</h4>');
 	if($last->rowCount() == 0)
 	{
-		echo('<p>'.$_LANG['labels']['empty-lastMatch'].'</p>');
+		echo('<p>'.$_LANG['labels']['empty-lastMatch'].'</p></div>');
 	}
 	else
 	{
@@ -139,7 +141,7 @@ if($showAll == false){
 				getGaming($match['teamId-1']),
 				getGaming($match['teamId-2'])
 			);
-			$match_result = ($match['teamWinId'] == $result['id']) ? '<span class="label label-success">'.$_LANG['labels']['win'].'</span>' : '<span class="label label-danger">'.$_LANG['labels']['lose'].'</span>';
+			$match_result = ($match['teamWinId'] == $result['id']) ? '<span class="wygrana">'.$_LANG['labels']['win'].'</span>' : '<span class="porazka">'.$_LANG['labels']['lose'].'</span>';
 			echo '<tr>
 	        	<td><img src="files/images/icons/'. $game[ 'logo' ].'" alt="'. $game[ 'name' ].'"></td>
 	            <td><a href="teams/'.$enemys[0]['tag'].'">'.$enemys[0]['fullname'].'</a></td>
@@ -149,7 +151,9 @@ if($showAll == false){
 	        </tr>';
 
 		}	
-		echo('</table>');	
+		echo('</table>
+		</div>
+		');	
 
 	}
 	echo '</div>';
