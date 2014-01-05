@@ -11,14 +11,8 @@ if( !defined("__LOAD__") )
 }
 
 ?>
-
-<div class="clearfix" style="margin-top: 10px"></div>
-
-
-<div class="row row-offcanvas row-offcanvas-right">
-		<div class="col-xs-12 col-sm-12 col-md-8">
-<div class="well-sm biale">
-<h1>Rejestracja</h1>
+<div class="druzyna-txt">
+<h4 class="register">Rejestracja</h4>
 
 <script type="text/javascript">
 
@@ -345,89 +339,46 @@ if( $_SETTINGS[ $_GLOBALS[ 'lang' ] ][ 'register' ][ 'register' ] == 'true' )
 	{
 
 		echo('<form action="register" method="post">
-
 		<fieldset id="register">');
-
-		
-
-		if( !empty( $_LANG[ 'register' ][ 'info' ] ) )
-
-		{
-
+		if( !empty( $_LANG[ 'register' ][ 'info' ] ) ){
 			echo('<p>'. $_LANG[ 'register' ][ 'info' ] .'</p>');
-
 		}
-
-		
-
-		if( !empty($errors) )
-
-		{
-
-			echo('<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><b>'.$_LANG['register'][ 'errors' ].'</b><br><ul class="list-unstyled" >');
-			foreach( $errors as $error )
-
-			{
-
+		if( !empty($errors) ){
+			echo('<div class="bledy">'.$_LANG['register'][ 'errors' ].'<ul>');
+			foreach( $errors as $error ){
 				echo('<li>'. $error. '</li>');
-
 			}
 			echo('</ul></div>');
-
 		}
+		echo('<hr>');
+		echo('<h5><label for="register_01">'. $_LANG[ 'labels' ][ 'nick' ]. '</label></h5>');
+		echo('<input type="text" name="register_01" id="register_01" value="'. $inputs['01'] .'" class="empty1" required><div class="status">&nbsp;</div>');
 
+		echo('
+			  <h5><label for="register_02">'. $_LANG[ 'labels' ][ 'pw' ]. '</label></h5>');
+		echo('<input type="password" name="register_02" id="register_02" class="empty1" required>');
 		
+		echo('<label for="register_03">'. $_LANG[ 'labels' ][ 'repw' ]. '</label>');
+		echo('<input type="password" name="register_03" id="register_03"class="empty1" required>');
+		echo('<h5><label for="register_04">'. $_LANG[ 'labels' ][ 'mail' ]. '</label></h5>');
+		echo('<input type="email" name="register_04" id="register_04" value="'. $inputs['04'] .'" class="empty1" required>');
+		echo(''. recaptcha_get_html($publickey) .'');
+		echo('<input type="checkbox" name="register_05" value="true" id="register_05" required>
+			<label for="register_05">'. $_LANG[ 'labels' ][ '18years' ]. '</label><br>');
+		echo('<input type="checkbox" name="register_06" value="true" id="register_06" required>
+			<label for="register_06">'. $_LANG[ 'labels' ][ 'rules' ]. ' <a href="' .$_SETTINGS[ $_GLOBALS[ 'lang' ] ][ 'general' ][ 'rules' ] .'">'. $_LANG[ 'labels' ][ 'show-rules' ]. '</a></label><br>');
 
-		echo('<dl>');
+		echo('<input type="checkbox" name="register_07" value="true" id="register_07"');
 
-		echo('<dt><label for="register_01">'. $_LANG[ 'labels' ][ 'nick' ]. '</label></dt>');
-
-		echo('<dd><input type="text" name="register_01" id="register_01" value="'. $inputs['01'] .'" class="nick" required><div class="status">&nbsp;</div></dd>');
-
-		echo('<dt><label for="register_02">'. $_LANG[ 'labels' ][ 'pw' ]. '</label></dt>');
-
-		echo('<dd><input type="password" name="register_02" id="register_02" class="pass1" required><div class="status">&nbsp;</div><br>
-
-		<div id="passwordStrengthDiv" class="is0"></div></dd>');
-
-		echo('<dt><label for="register_03">'. $_LANG[ 'labels' ][ 'repw' ]. '</label></dt>');
-
-		echo('<dd><input type="password" name="register_03" id="register_03"class="pass1" required><div class="status">&nbsp;</div></dd>');
-
-		echo('<dt><label for="register_04">'. $_LANG[ 'labels' ][ 'mail' ]. '</label></dt>');
-
-		echo('<dd><input type="email" name="register_04" id="register_04" value="'. $inputs['04'] .'" class="mail" required><div class="status">&nbsp;</div></dd>');
-
-		echo('<dd>'. recaptcha_get_html($publickey) .'</dd>');
-
-		echo('<dd><input type="checkbox" name="register_05" value="true" id="register_05" required>
-
-			<label for="register_05">'. $_LANG[ 'labels' ][ '18years' ]. '</label></dd>');
-
-		echo('<dd><input type="checkbox" name="register_06" value="true" id="register_06" required>
-
-			<label for="register_06">'. $_LANG[ 'labels' ][ 'rules' ]. ' <a href="' .$_SETTINGS[ $_GLOBALS[ 'lang' ] ][ 'general' ][ 'rules' ] .'">'. $_LANG[ 'labels' ][ 'show-rules' ]. '</a></label></dd>');
-
-		echo('<dd><input type="checkbox" name="register_07" value="true" id="register_07"');
-
-		if( isset($_POST['register_07']) &&  $_POST['register_07'] == "true" )
-
-		{
-
+		if( isset($_POST['register_07']) &&  $_POST['register_07'] == "true" ){
 			echo(' checked');
 
 		}
-
-		echo('> <label for="register_07">'. $_LANG[ 'labels' ][ 'newsletter' ]. '</label></dd>');
-
-		echo('<dd><input type="submit" name="reg_submit" value="'. $_LANG[ 'labels' ][ 'register' ]. '" class="btn btn-success"></dd>');
-
+		echo('> <label for="register_07">'. $_LANG[ 'labels' ][ 'newsletter' ]. '</label><br>');
+		echo('<input type="submit" name="reg_submit" value="'. $_LANG[ 'labels' ][ 'register' ]. '" class="przycisk-login">');
 		echo('<input type="hidden" name="register_08" value="'.$inputs['05'].'">');
-
 		echo('</dl>');
-
 		echo('</fieldset>
-
 		</form><br>');
 
 	}
